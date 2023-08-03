@@ -2,8 +2,6 @@ import '@/styles/globals.css';
 
 import { Metadata } from 'next';
 
-import { Link } from '@nextui-org/link';
-
 import { Providers } from './providers';
 import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
