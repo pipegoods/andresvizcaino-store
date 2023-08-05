@@ -1,13 +1,11 @@
-import NextLink from 'next/link';
+import { Image } from '@nextui-org/image';
 
-import { Link } from '@nextui-org/link';
-import { button as buttonStyles } from '@nextui-org/theme';
-
-import { GithubIcon } from '@/components/icons';
 import { subtitle, title } from '@/components/primitives';
-import { siteConfig } from '@/config/site';
+import { getProducts } from '@/services/product';
 
-export default function Home() {
+export default async function Home() {
+    const products = await getProducts();
+
     return (
         <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
             <div className="inline-block max-w-lg justify-center text-center">
@@ -17,19 +15,28 @@ export default function Home() {
                 </h2>
             </div>
 
-            <div className="flex gap-3">
-                <Link
-                    isExternal
-                    as={NextLink}
-                    className={buttonStyles({
-                        variant: 'bordered',
-                        radius: 'full',
-                    })}
-                    href={siteConfig.links.github}
-                >
-                    <GithubIcon size={20} />
-                    GitHub
-                </Link>
+            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {products.map((product) => (
+                    <div
+                        key={product.id}
+                        className="flex flex-col items-center justify-center gap-2 rounded-md bg-default-100 p-4"
+                    >
+                        <Image
+                            width={300}
+                            height={300}
+                            isZoomed
+                            alt={`Imagen de ${product.title}`}
+                            src={product.image || ''}
+                        />
+                        <p className="text-center text-sm font-semibold">
+                            {product.title}
+                        </p>
+                        <p className="text-center text-sm font-semibold">
+                            {product.price}
+                        </p>
+                        <p>{product.brand.name}</p>
+                    </div>
+                ))}
             </div>
         </section>
     );

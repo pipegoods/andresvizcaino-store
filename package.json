@@ -13,6 +13,7 @@
   "dependencies": {
     "@nextui-org/button": "2.0.1",
     "@nextui-org/code": "2.0.1",
+    "@nextui-org/image": "^2.0.2",
     "@nextui-org/input": "2.0.1",
     "@nextui-org/kbd": "2.0.1",
     "@nextui-org/link": "2.0.1",
@@ -35,6 +36,7 @@
     "next": "13.4.12",
     "next-themes": "^0.2.1",
     "postcss": "8.4.27",
+    "qs": "^6.11.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tailwind-variants": "^0.1.13",
@@ -43,6 +45,7 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
+    "@types/qs": "^6.9.7",
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
     "eslint-plugin-tailwindcss": "^3.13.0",
