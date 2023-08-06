@@ -1,7 +1,11 @@
+import Link from 'next/link';
+
+import { Card, CardBody, CardFooter } from '@nextui-org/card';
 import { Image } from '@nextui-org/image';
 
 import { subtitle, title } from '@/components/primitives';
 import { getProducts } from '@/services/product';
+import { formatCurrency } from '@/utils/format-currency';
 
 export default async function Home() {
     const products = await getProducts();
@@ -17,25 +21,26 @@ export default async function Home() {
 
             <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {products.map((product) => (
-                    <div
-                        key={product.id}
-                        className="flex flex-col items-center justify-center gap-2 rounded-md bg-default-100 p-4"
-                    >
-                        <Image
-                            width={300}
-                            height={300}
-                            isZoomed
-                            alt={`Imagen de ${product.title}`}
-                            src={product.image || ''}
-                        />
-                        <p className="text-center text-sm font-semibold">
-                            {product.title}
-                        </p>
-                        <p className="text-center text-sm font-semibold">
-                            {product.price}
-                        </p>
-                        <p>{product.brand.name}</p>
-                    </div>
+                    <Link key={product.id} href={`/product/${product.slug}`}>
+                        <Card shadow="sm" isPressable>
+                            <CardBody className="overflow-visible p-0">
+                                <Image
+                                    shadow="sm"
+                                    radius="lg"
+                                    width="100%"
+                                    alt={`${product.title} image`}
+                                    className="h-[240px] w-full object-contain"
+                                    src={product.image}
+                                />
+                            </CardBody>
+                            <CardFooter className="justify-between text-small">
+                                <b>{product.title}</b>
+                                <p className="text-default-500">
+                                    {formatCurrency(product.price)}
+                                </p>
+                            </CardFooter>
+                        </Card>
+                    </Link>
                 ))}
             </div>
         </section>

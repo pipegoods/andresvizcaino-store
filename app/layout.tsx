@@ -3,6 +3,7 @@ import '@/styles/globals.css';
 import { Metadata } from 'next';
 
 import { Providers } from './providers';
+import { CartBubble } from '@/components/cart-bubble';
 import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
 import { fontSans } from '@/config/fonts';
@@ -49,6 +50,7 @@ export default function RootLayout({
                             {children}
                         </main>
                         <Footer />
+                        <CartBubble />
                     </div>
                 </Providers>
             </body>

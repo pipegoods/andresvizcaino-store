@@ -212,3 +212,49 @@ export const NextUILogo: React.FC<IconSvgProps> = (props) => {
         </svg>
     );
 };
+
+export const CartIcon: React.FC<IconSvgProps> = ({
+    size = 24,
+    width,
+    height,
+    ...props
+}) => {
+    return (
+        <svg
+            aria-hidden="true"
+            focusable="false"
+            height={size || height}
+            role="presentation"
+            viewBox="0 0 24 24"
+            width={size || width}
+            fill="none"
+            {...props}
+        >
+            <circle
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                cx="8"
+                cy="21"
+                r="1"
+            ></circle>
+            <circle
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                cx="19"
+                cy="21"
+                r="1"
+            ></circle>
+            <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M2.05 2.05h2l2.66 12.42a2 2 0 002 1.58h9.78a2 2 0 001.95-1.57l1.65-7.43H5.12"
+            ></path>
+        </svg>
+    );
+};
