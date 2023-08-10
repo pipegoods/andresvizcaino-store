@@ -49,7 +49,14 @@ export default async function ProductSlugPage({
                 >
                     {formatCurrency(product.price)}
                 </p>
-                <CartButton product={product} />
+
+                <div className="mt-10">
+                    {product.availability ? (
+                        <CartButton product={product} />
+                    ) : (
+                        <Chip color="danger">Agotado</Chip>
+                    )}
+                </div>
             </div>
         </section>
     );

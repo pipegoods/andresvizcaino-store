@@ -8,5 +8,6 @@ export const siteConfig = {
     navMenuItems: [],
     links: {
         github: 'https://github.com/pipegoods',
+        cart: '/cart',
     },
 };

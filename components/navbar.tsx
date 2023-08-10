@@ -11,7 +11,8 @@ import {
     Navbar as NextUINavbar,
 } from '@nextui-org/navbar';
 
-import { GithubIcon, SearchIcon } from '@/components/icons';
+import { CartIconWithBadge } from './cart-icon-with-badge';
+import { CartIcon, SearchIcon, WhatsAppIcon } from '@/components/icons';
 import { ThemeSwitch } from '@/components/theme-switch';
 import { siteConfig } from '@/config/site';
 
@@ -60,9 +61,15 @@ export const Navbar = () => {
                     <Link
                         isExternal
                         href={siteConfig.links.github}
-                        aria-label="Github"
+                        aria-label="WhatsApp"
                     >
-                        <GithubIcon className="text-default-500" />
+                        <WhatsAppIcon className="text-default-500" />
+                    </Link>
+                    <Link
+                        href={siteConfig.links.cart}
+                        aria-label="Carrito de compras"
+                    >
+                        <CartIconWithBadge />
                     </Link>
                     <ThemeSwitch />
                 </NavbarItem>
@@ -77,7 +84,7 @@ export const Navbar = () => {
                     href={siteConfig.links.github}
                     aria-label="Github"
                 >
-                    <GithubIcon className="text-default-500" />
+                    <WhatsAppIcon className="text-default-500" />
                 </Link>
                 <ThemeSwitch />
                 <NavbarMenuToggle />

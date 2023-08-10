@@ -32,12 +32,7 @@ export const CartButton = ({ product }: CartButtonProps) => {
     };
 
     return (
-        <Button
-            onClick={onClick}
-            color={color}
-            className="mt-10"
-            startContent={<CartIcon />}
-        >
+        <Button onClick={onClick} color={color} startContent={<CartIcon />}>
             {copy}
         </Button>
     );
