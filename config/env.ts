@@ -1,4 +1,1 @@
-export const {
-    NEXT_PUBLIC_STRAPI_TOKEN: STRAPI_TOKEN,
-    NEXT_PUBLIC_STRAPI_API_URL: API_URL,
-} = process.env;
+export const { STRAPI_TOKEN, STRAPI_API_URL: API_URL } = process.env;
