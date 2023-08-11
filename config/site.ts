@@ -7,7 +7,7 @@ export const siteConfig = {
     navItems: [],
     navMenuItems: [],
     links: {
-        github: 'https://github.com/pipegoods',
+        whatsapp: 'https://api.whatsapp.com/send?phone=573167966709',
         cart: '/cart',
     },
 };

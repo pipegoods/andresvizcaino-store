@@ -23,7 +23,7 @@ export default async function ProductSlugPage({
     const product = await getProduct(slug);
 
     return (
-        <section className="grid grid-cols-2 gap-10">
+        <section className="grid grid-cols-1 gap-10 md:grid-cols-2">
             <div>
                 <Image
                     src={product.image}

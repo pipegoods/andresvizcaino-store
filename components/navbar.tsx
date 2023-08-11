@@ -60,7 +60,7 @@ export const Navbar = () => {
                 <NavbarItem className="hidden gap-2 sm:flex">
                     <Link
                         isExternal
-                        href={siteConfig.links.github}
+                        href={siteConfig.links.whatsapp}
                         aria-label="WhatsApp"
                     >
                         <WhatsAppIcon className="text-default-500" />
@@ -79,12 +79,8 @@ export const Navbar = () => {
             </NavbarContent>
 
             <NavbarContent className="basis-1 pl-4 sm:hidden" justify="end">
-                <Link
-                    isExternal
-                    href={siteConfig.links.github}
-                    aria-label="Github"
-                >
-                    <WhatsAppIcon className="text-default-500" />
+                <Link href={siteConfig.links.cart} aria-label="cart">
+                    <CartIconWithBadge />
                 </Link>
                 <ThemeSwitch />
                 <NavbarMenuToggle />
