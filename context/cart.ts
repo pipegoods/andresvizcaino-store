@@ -8,6 +8,7 @@ interface CartState {
     deleteProduct: (product: Product) => void;
     isInCart: (slug: string) => boolean;
     clearCart: () => void;
+    updateProduct: (product: Product) => void;
 }
 
 export const useCartStore = create<CartState>()(
@@ -35,6 +36,14 @@ export const useCartStore = create<CartState>()(
                 })),
             isInCart: (slug) => get().products.some((p) => p.slug === slug),
             clearCart: () => set({ products: [] }),
+            updateProduct: (product) =>
+                set((state) => {
+                    const products = state.products.map((p) =>
+                        p.slug === product.slug ? product : p,
+                    );
+
+                    return { products };
+                }),
         }),
         {
             name: 'cart-storage',

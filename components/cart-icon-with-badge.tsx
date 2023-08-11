@@ -9,6 +9,8 @@ export const CartIconWithBadge = () => {
     const cart = useCartStore((state) => state.products);
     const totalItems = cart.length;
 
+    if (!totalItems) return <CartIcon />;
+
     return (
         <Badge color="danger" content={totalItems} shape="circle">
             <CartIcon />

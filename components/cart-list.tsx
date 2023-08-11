@@ -1,23 +1,49 @@
 'use client';
 
+import { useEffect } from 'react';
+
 import Link from 'next/link';
 
 import { Button } from '@nextui-org/button';
 import { Image } from '@nextui-org/image';
 
 import { useCartStore } from '@/context/cart';
+import { Product } from '@/types/product';
 import { formatCurrency } from '@/utils/format-currency';
 
-export const CartList = () => {
+type CartListProps = {
+    products: Product[];
+};
+
+export const CartList = ({ products }: CartListProps) => {
     const cart = useCartStore((state) => state.products);
     const deleteProduct = useCartStore((state) => state.deleteProduct);
+    const updateProduct = useCartStore((state) => state.updateProduct);
     const totalItems = cart.length;
+
+    useEffect(() => {
+        if (cart.length === 0) return;
+
+        cart.forEach((product) => {
+            const productInCart = products.find((p) => p.id === product.id);
+
+            if (!productInCart) return;
+
+            if (productInCart.availability === false) {
+                deleteProduct(productInCart);
+                return;
+            }
+
+            updateProduct(productInCart);
+        });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [products]);
 
     return (
         <section className="flex flex-col gap-3">
             {totalItems > 0 ? (
                 cart.map((product) => (
-                    <div
+                    <article
                         key={product.slug}
                         className="flex w-full flex-row justify-between gap-10"
                     >
@@ -46,7 +72,7 @@ export const CartList = () => {
                         <Button onClick={() => deleteProduct(product)}>
                             Eliminar
                         </Button>
-                    </div>
+                    </article>
                 ))
             ) : (
                 <p className="text-default-500">
