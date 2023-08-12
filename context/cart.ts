@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 import { Product } from '@/types/product';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
@@ -11,7 +13,16 @@ interface CartState {
     updateProduct: (product: Product) => void;
 }
 
-export const useCartStore = create<CartState>()(
+const emptyState: CartState = {
+    products: [],
+    addProduct: () => {},
+    deleteProduct: () => {},
+    isInCart: () => false,
+    clearCart: () => {},
+    updateProduct: () => {},
+};
+
+export const useStore = create<CartState>()(
     persist(
         (set, get) => ({
             products: [],
@@ -50,3 +61,11 @@ export const useCartStore = create<CartState>()(
         },
     ),
 );
+
+export const useCartStore = ((selector, compare) => {
+    const store = useStore(selector, compare);
+    const [hydrated, setHydrated] = useState(false);
+    useEffect(() => setHydrated(true), []);
+
+    return hydrated ? store : selector(emptyState);
+}) as typeof useStore;
