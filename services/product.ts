@@ -11,10 +11,10 @@ export async function getProducts(): Promise<Product[]> {
                 fields: ['url'],
             },
             brand: {
-                fields: ['name'],
+                fields: ['name', 'slug'],
             },
             category: {
-                fields: ['name'],
+                fields: ['name', 'slug'],
             },
         },
     };

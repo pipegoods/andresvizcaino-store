@@ -30,6 +30,7 @@ export interface BrandData {
 
 export interface PurpleAttributes {
     name: string;
+    slug: string;
 }
 
 export interface Image {
@@ -57,12 +58,12 @@ export function adapterProduct(product: DataRepsonse): Product {
         brand: {
             id: product.attributes.brand.data.id,
             name: product.attributes.brand.data.attributes.name,
-            slug: product.attributes.brand.data.attributes.name,
+            slug: product.attributes.brand.data.attributes.slug,
         },
         category: {
             id: product.attributes.category.data.id,
             name: product.attributes.category.data.attributes.name,
-            slug: product.attributes.category.data.attributes.name,
+            slug: product.attributes.category.data.attributes.slug,
         },
     };
 }

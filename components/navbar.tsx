@@ -12,7 +12,7 @@ import {
 } from '@nextui-org/navbar';
 
 import { CartIconWithBadge } from './cart-icon-with-badge';
-import { CartIcon, SearchIcon, WhatsAppIcon } from '@/components/icons';
+import { SearchIcon, WhatsAppIcon } from '@/components/icons';
 import { ThemeSwitch } from '@/components/theme-switch';
 import { siteConfig } from '@/config/site';
 
