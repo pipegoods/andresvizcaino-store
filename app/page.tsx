@@ -32,7 +32,7 @@ export default async function Home({
                 </h2>
             </div>
 
-            <article className="flex flex-row items-center gap-2">
+            <article className="flex flex-row flex-wrap items-center justify-center gap-2">
                 <Link href="/">
                     <Chip
                         variant={!searchParams.category ? 'solid' : 'flat'}
