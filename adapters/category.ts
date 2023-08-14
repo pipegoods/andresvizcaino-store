@@ -1,4 +1,4 @@
-import { DataRepsonse } from '@/types';
+import type { DataRepsonse } from '@/types';
 import { Category } from '@/types/category';
 
 export function adapterCategory(response: DataRepsonse<Category>): Category {

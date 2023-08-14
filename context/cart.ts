@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Product } from '@/types/product';
+import type { Product } from '@/types/product';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 

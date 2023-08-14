@@ -1,6 +1,6 @@
 import { adapterCategory } from '@/adapters/category';
-import { DataRepsonse } from '@/types';
-import { Category } from '@/types/category';
+import type { DataRepsonse } from '@/types';
+import type { Category } from '@/types/category';
 import { fetchAPI } from '@/utils/fetch-api';
 
 const PATH = '/categories';

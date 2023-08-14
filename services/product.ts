@@ -1,5 +1,5 @@
 import { DataRepsonse, adapterProduct } from '@/adapters/product';
-import { Product } from '@/types/product';
+import type { Product } from '@/types/product';
 import { fetchAPI } from '@/utils/fetch-api';
 
 const PATH = '/products';

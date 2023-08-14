@@ -4,7 +4,7 @@ import { Button } from '@nextui-org/button';
 
 import { CartIcon } from './icons';
 import { useCartStore } from '@/context/cart';
-import { Product } from '@/types/product';
+import type { Product } from '@/types/product';
 
 interface CartButtonProps {
     product: Product;

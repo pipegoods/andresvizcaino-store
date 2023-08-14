@@ -1,7 +1,6 @@
 import NextLink from 'next/link';
 
 import { Input } from '@nextui-org/input';
-import { Kbd } from '@nextui-org/kbd';
 import { Link } from '@nextui-org/link';
 import {
     NavbarBrand,
@@ -18,24 +17,22 @@ import { siteConfig } from '@/config/site';
 
 export const Navbar = () => {
     const searchInput = (
-        <Input
-            aria-label="Search"
-            classNames={{
-                inputWrapper: 'bg-default-100',
-                input: 'text-sm',
-            }}
-            endContent={
-                <Kbd className="hidden lg:inline-block" keys={['command']}>
-                    K
-                </Kbd>
-            }
-            labelPlacement="outside"
-            placeholder="Buscar producto..."
-            startContent={
-                <SearchIcon className="pointer-events-none shrink-0 text-base text-default-400" />
-            }
-            type="search"
-        />
+        <form className="flex items-center gap-2" action="/search">
+            <Input
+                aria-label="Search"
+                classNames={{
+                    inputWrapper: 'bg-default-100',
+                    input: 'text-sm',
+                }}
+                name="q"
+                labelPlacement="outside"
+                placeholder="Buscar producto..."
+                startContent={
+                    <SearchIcon className="pointer-events-none shrink-0 text-base text-default-400" />
+                }
+                type="search"
+            />
+        </form>
     );
 
     return (

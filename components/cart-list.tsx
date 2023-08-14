@@ -8,7 +8,7 @@ import { Button } from '@nextui-org/button';
 import { Image } from '@nextui-org/image';
 
 import { useCartStore } from '@/context/cart';
-import { Product } from '@/types/product';
+import type { Product } from '@/types/product';
 import { formatCurrency } from '@/utils/format-currency';
 
 type CartListProps = {
