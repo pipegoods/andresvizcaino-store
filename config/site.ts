@@ -1,3 +1,5 @@
+import { NEXT_PUBLIC_WHASTAPP_NUMBER } from './env';
+
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
@@ -7,7 +9,7 @@ export const siteConfig = {
     navItems: [],
     navMenuItems: [],
     links: {
-        whatsapp: 'https://api.whatsapp.com/send?phone=573167966709',
+        whatsapp: `https://api.whatsapp.com/send?phone=${NEXT_PUBLIC_WHASTAPP_NUMBER}`,
         cart: '/cart',
     },
 };

@@ -17,12 +17,8 @@ export default async function Home({
     const products = await getProducts();
     const categories = await getCategories();
 
-    console.log(searchParams);
-
     const filteredProducts = products.filter((product) => {
         if (!searchParams.category) return true;
-
-        console.log(product.category.slug, ' === ', searchParams.category);
 
         return product.category.slug === searchParams.category;
     });
@@ -30,16 +26,15 @@ export default async function Home({
     return (
         <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
             <div className="inline-block max-w-lg justify-center text-center">
-                <h1 className={title()}>PC Gaming Colombia</h1>
+                <h1 className={title()}>Andrés Vizcaíno Store</h1>
                 <h2 className={subtitle({ class: 'mt-4' })}>
-                    Comprar hardware en Colombia nunca fue tan facíl
+                    Arma tu carrito y completa tu orden por WhatsApp
                 </h2>
             </div>
 
-            <article>
+            <article className="flex flex-row items-center gap-2">
                 <Link href="/">
                     <Chip
-                        className="mr-2"
                         variant={!searchParams.category ? 'solid' : 'flat'}
                         color={!searchParams.category ? 'primary' : 'default'}
                     >
@@ -57,7 +52,6 @@ export default async function Home({
                         prefetch={false}
                     >
                         <Chip
-                            className="mr-2"
                             variant={
                                 searchParams.category === category.slug
                                     ? 'solid'
@@ -103,7 +97,7 @@ export default async function Home({
                                     src={product.image}
                                 />
                             </CardBody>
-                            <CardFooter className="justify-between text-small">
+                            <CardFooter className="justify-between gap-3 text-small">
                                 <b>{product.title}</b>
                                 <p className="text-default-500">
                                     {formatCurrency(product.price)}
