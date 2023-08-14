@@ -7,6 +7,7 @@ import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
 import { fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
+import { Analytics } from '@vercel/analytics/react';
 import clsx from 'clsx';
 
 export const metadata: Metadata = {
@@ -51,6 +52,8 @@ export default function RootLayout({
                         <Footer />
                     </div>
                 </Providers>
+
+                <Analytics />
             </body>
         </html>
     );
