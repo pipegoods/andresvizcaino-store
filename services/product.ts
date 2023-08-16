@@ -28,6 +28,40 @@ export async function getProducts(): Promise<Product[]> {
     return adaptedProducts;
 }
 
+type GetProductsByCategoryParams = {
+    search: string;
+};
+export async function getProductsSearchByTitle({
+    search,
+}: GetProductsByCategoryParams): Promise<Product[]> {
+    const urlParamsObject = {
+        populate: {
+            image: {
+                fields: ['url'],
+            },
+            brand: {
+                fields: ['name', 'slug'],
+            },
+            category: {
+                fields: ['name', 'slug'],
+            },
+        },
+        filters: {
+            title: {
+                $contains: search,
+            },
+        },
+    };
+
+    const products = await fetchAPI(PATH, urlParamsObject);
+    const { data } = products as { data: DataRepsonse[] };
+
+    // adapt response with Product type
+    const adaptedProducts: Product[] = data.map(adapterProduct);
+
+    return adaptedProducts;
+}
+
 export async function getProduct(slug: string): Promise<Product> {
     const urlParamsObject = {
         filters: {

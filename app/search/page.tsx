@@ -5,7 +5,7 @@ import { Code } from '@nextui-org/code';
 
 import { CardProduct } from '@/components/card-product';
 import { subtitle, title } from '@/components/primitives';
-import { getProducts } from '@/services/product';
+import { getProductsSearchByTitle } from '@/services/product';
 
 export default async function SearchPage({
     searchParams,
@@ -14,11 +14,9 @@ export default async function SearchPage({
 }) {
     const { q } = searchParams;
 
-    const products = await getProducts();
+    const products = await getProductsSearchByTitle({ search: q });
 
-    const filteredProducts = products.filter((product) =>
-        product.title.toLowerCase().includes(q.toLowerCase()),
-    );
+    const haveProducts = !!products.length;
 
     return (
         <section>
@@ -29,13 +27,21 @@ export default async function SearchPage({
             >
                 Resultado para <Code size="lg">{q}</Code>
             </h1>
-            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {filteredProducts.map((product) => (
-                    <CardProduct key={product.id} product={product} />
-                ))}
-            </div>
+            {haveProducts && (
+                <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {products.map((product) => (
+                        <CardProduct key={product.id} product={product} />
+                    ))}
+                </div>
+            )}
 
-            {!filteredProducts.length && (
+            {haveProducts && (
+                <p className="mt-10">
+                    Se encontraron <Code>{products.length}</Code> resultados
+                </p>
+            )}
+
+            {!haveProducts && (
                 <div className="flex flex-col gap-5 text-center">
                     <h2 className={title()}>No encontramos nada {':('}</h2>
 
