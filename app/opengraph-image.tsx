@@ -17,7 +17,7 @@ export const contentType = 'image/png';
 // Image generation
 export default async function Image() {
     // Font
-    const interSemiBold = fetch(
+    const poppinsSemiBold = fetch(
         new URL('./Poppins-SemiBold.ttf', import.meta.url),
     ).then((res) => res.arrayBuffer());
 
@@ -27,15 +27,17 @@ export default async function Image() {
             <div
                 style={{
                     fontSize: 128,
-                    background: 'white',
+                    background: 'black',
+                    color: '#ebeded',
                     width: '100%',
                     height: '100%',
                     display: 'flex',
+                    textAlign: 'center',
                     alignItems: 'center',
                     justifyContent: 'center',
                 }}
             >
-                Andrés Vizcaíno Store
+               🖥️ Andrés Vizcaíno Store
             </div>
         ),
         // ImageResponse options
@@ -46,7 +48,7 @@ export default async function Image() {
             fonts: [
                 {
                     name: 'Poppins',
-                    data: await interSemiBold,
+                    data: await poppinsSemiBold,
                     style: 'normal',
                     weight: 400,
                 },
